@@ -82,7 +82,7 @@ public class BasicArrayList<E> extends AbstractList<E> {
         if (min <= oldCapacity) {
             return;
         }
-        int newCapacity = oldCapacity + (oldCapacity << 1);
+        int newCapacity = oldCapacity + (oldCapacity >> 1);
         min = Math.max(min, newCapacity);
         elementData = Arrays.copyOf(elementData, min);
     }

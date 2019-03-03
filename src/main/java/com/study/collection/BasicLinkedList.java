@@ -2,7 +2,7 @@ package com.study.collection;
 
 import java.util.AbstractList;
 
-// todo 功能尚未实现
+// todo 功能尚未完全实现
 public class BasicLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
     private Node<E> last;
@@ -90,7 +90,7 @@ public class BasicLinkedList<E> extends AbstractList<E> {
     }
 
     private void linkBefore(int index, E e) {
-        Node<E> current = new Node<E>(e, null, null);
+        Node<E> current = new Node<E>(null, e, null);
 
         // 一定不是 null
         Node<E> next = node(index);
@@ -110,11 +110,9 @@ public class BasicLinkedList<E> extends AbstractList<E> {
     }
 
     private void linkLast(E e) {
-//        Node<E> l = last;
-        Node<E> node = new Node<E>(e, last, null);
+        Node<E> node = new Node<E>(last, e, null);
         if (first == null) {
             first = node;
-            last = node;
         } else {
             last.next = node;
         }
@@ -123,13 +121,13 @@ public class BasicLinkedList<E> extends AbstractList<E> {
     }
 
     private class Node<E> {
-        private E item;
         private Node<E> prev;
+        private E item;
         private Node<E> next;
 
-        Node(E item, Node<E> prev, Node<E> next) {
-            this.item = item;
+        Node(Node<E> prev, E item, Node<E> next) {
             this.prev = prev;
+            this.item = item;
             this.next = next;
         }
     }

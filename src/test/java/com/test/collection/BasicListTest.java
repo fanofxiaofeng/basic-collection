@@ -70,4 +70,23 @@ public abstract class BasicListTest {
             Assert.assertEquals(standard.toString(), fake.toString());
         }
     }
+
+    void appendingOperationPerformance(List<Integer> standard, List<Integer> fake, int N) throws Exception {
+        long delta1 = append(standard, N);
+        long delta2 = append(fake, N);
+
+        System.out.println(delta1);
+        System.out.println(delta2);
+        Assert.assertEquals(standard.size(), fake.size());
+        Assert.assertTrue(delta2 <= delta1);
+    }
+
+    private long append(List<Integer> list, int N) {
+        long t1 = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            list.add(i);
+        }
+        long t2 = System.currentTimeMillis();
+        return t2 - t1;
+    }
 }

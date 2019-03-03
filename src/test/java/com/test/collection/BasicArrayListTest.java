@@ -1,7 +1,7 @@
 package com.test.collection;
 
 import com.study.collection.BasicArrayList;
-import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -21,27 +21,12 @@ public class BasicArrayListTest extends BasicListTest {
     /**
      * 测试 BasicArrayList 的性能(仅限于在 List 末尾添加元素的操作)
      */
+    @Ignore
     @Test
-    public void performance() {
+    public void appendingOperationPerformance() throws Exception {
         ArrayList<Integer> standard = new ArrayList<Integer>();
         BasicArrayList<Integer> fake = new BasicArrayList<Integer>();
-
-        long t1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
-            standard.add(i);
-        }
-        long t2 = System.currentTimeMillis();
-        long delta1 = t2 - t1;
-
-        t1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
-            fake.add(i);
-        }
-        t2 = System.currentTimeMillis();
-        long delta2 = t2 - t1;
-
-        System.out.println(delta1);
-        System.out.println(delta2);
-        Assert.assertTrue(delta2 <= delta1);
+        // standard 和 fake 互有胜负
+        appendingOperationPerformance(standard, fake, 10000);
     }
 }
