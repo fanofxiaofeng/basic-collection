@@ -1,6 +1,7 @@
 package com.study.map;
 
 import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class BasicHashMap<K, V> extends AbstractMap<K, V> {
     @Override
     public V get(Object key) {
         int hash = key == null ? 0 : key.hashCode();
-        int bucket = (table.length) & hash;
+        int bucket = (table.length - 1) & hash;
         Node<K, V> e = (Node<K, V>) table[bucket];
         while (e != null) {
             if (key == e.key || (key != null && (key.equals(e.key)))) {
@@ -46,7 +47,7 @@ public class BasicHashMap<K, V> extends AbstractMap<K, V> {
     @Override
     public V put(K key, V value) {
         int hash = key == null ? 0 : key.hashCode();
-        int bucket = (table.length) & hash;
+        int bucket = (table.length - 1) & hash;
 
         Node<K, V> node = new Node<K, V>(key, hash, value, null);
         if (table[bucket] == null) {

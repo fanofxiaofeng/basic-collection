@@ -1,5 +1,5 @@
 # basic-collection
-java collection 的简单实现
+java collection 的简单实现(其实也有 map 的简单实现)
 
 ## BasicArrayList
 [BasicArrayList.java](src/main/java/com/study/collection/BasicArrayList.java)
@@ -32,5 +32,17 @@ java collection 的简单实现
 
 
 增删改查的功能在 [BasicLinkedListTest.java](src/test/java/com/test/collection/BasicLinkedListTest.java) 中进行了简单的测试
+
+## BasicHashMap
+[BasicHashMap.java](src/main/java/com/study/map/BasicHashMap.java)
+大量参考了(或者说 copy 了?) jdk 中的 `HashMap` 的源码,
+也参考了 [LRH1993/android_interview 中的 hashmap.md](https://github.com/LRH1993/android_interview/blob/master/java/basis/hashmap.md) 等文章
+
+为了简易起见, `BasicHashMap` 中只实现基本的增删改查功能.
+具体如下
+1. 增只有 `put(K, V)`
+2. 删只有 `remove(Object)`
+3. 改只有 `put(K, V)`
+4. 查只有 `get(Object)`
 
 
